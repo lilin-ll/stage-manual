@@ -1,0 +1,167 @@
+**********************************************
+Step 1 : Install dependency.
+
+a)sudo apt-get update
+b)sudo apt-get upgrade
+c)sudo apt-get install autotools-dev
+d)sudo apt-get install build-essential
+e)sudo apt-get install cmake
+f)sudo apt-get install cpp
+g)sudo apt-get install libboost-signals1.46.1
+h)sudo apt-get install libboost-signals1.46-dev
+i)sudo apt-get install libboost-thread1.46.1
+j)sudo apt-get install libboost-thread1.46-dev
+k)sudo apt-get install libcv2.3
+l)sudo apt-get install libcv-dev
+m)sudo apt-get install libgdk-pixbuf2.0-0
+n)sudo apt-get install libgdk-pixbuf2.0-dev
+o)sudo apt-get install libgnomecanvas2-0
+p)sudo apt-get install libgnomecanvas2-dev
+q)sudo apt-get install libgsl0-dev
+r)sudo apt-get install libgtk2.0-dev
+s)sudo apt-get install libjpeg62-dev
+t)sudo apt-get install libtool
+u)sudo apt-get install libxmu-dev swig
+v)sudo apt-get install python2.7-dev
+w)sudo apt-get install libcv-dev
+x)sudo apt-get install libcvaux-dev
+y)sudo apt-get install libhighgui-dev
+z)sudo apt-get install freeglut3
+a)sudo apt-get install freeglut3-dev
+b)sudo apt-get install libfltk1.1
+c)sudo apt-get install libfltk1.1-dev
+d)sudo apt-get install libltdl7
+e)sudo apt-get install libltdl-dev
+f)sudo apt-get install libpng12-dev
+g)sudo apt-get install libpng12-0
+
+a)sudo apt-get update
+b)sudo apt-get upgrade
+
+**********************************************
+Step 2 : Install Player
+
+Create a new directory as you desire.
+
+mkdir PlayerStageSvn
+Go to that directory
+
+cd PlayerStageSvn
+Download the Player/Stage and so on from the sources
+
+svn checkout http://svn.code.sf.net/p/playerstage/svn/ playerstage-svn
+Go to the directory of player-<version>
+
+cd player-<3.0.2>
+Create a build directory
+
+mkdir build
+Go to the build directory
+
+cd build
+cmake in that directory
+
+cmake ../
+make
+
+make
+install the Player
+
+sudo make install
+**********************************************
+Step 3 : When errors ap
+The first error that I had is not the boost signals but Time_UTC, we have the change the TIME_UTC to TIME_UTC_
+ 
+
+ 
+
+Go to the directory of libplayerc++
+
+cd ../ client_libs/libplayerc++
+Open the text file of playerclient  
+
+gedit playerclient.cc &
+ 
+
+Search for the TIME_UTC, and change it into TIME_UTC_
+
+The second error is the path related one, run the following command in your terminal:
+export PATH=$PATH:"/usr/local/lib64"
+
+export LD_LIBRARY_PATH:"/usr/local/lib":"/usr/local/lib64"
+
+export PLAYERPATH="/usr/local/lib":"/usr/local/lib64"
+
+export STAGEPATH="/usr/local/lib":"/usr/local/lib64"
+
+Run the .bashrc file:
+
+source .bashrc
+
+*******************************
+Step 4 : Install Stage
+Even though we download the stage in the source, due to version issue, it is really hard to get it installed.
+Trying to search on line, perhaps there is a newest version for the Stage, and it is stage<4.1.1>.
+Download the latest version from this website: 
+From the website, we know that the newest version released in 2012 is 4.1.1
+ 
+
+https://github.com/rtv/stage/releases
+ 
+
+After you download stage at your download directory...
+
+Go to the Download directory
+
+cd Downloads/
+unzip the stage
+
+unzip Stage-4.1.1.zip
+Go to the stage directory
+
+cd stage-4.1.1/
+make a build directory
+
+mkdir build
+Go the build directory
+
+cd build
+make it
+
+make ../
+make it
+
+make
+install the stage
+
+sudo make install
+The same path related error might show up again, just type the same command as we did for the Player.
+
+export PATH=$PATH:"/usr/local/lib64"
+
+export LD_LIBRARY_PATH:"/usr/local/lib":"/usr/local/lib64"
+
+export PLAYERPATH="/usr/local/lib":"/usr/local/lib64"
+
+export STAGEPATH="/usr/local/lib":"/usr/local/lib64"
+
+and rerun the .bashrc file again
+
+source .bashrc
+Step 5 : Test your Stage
+First ensure that player is in the PATH, by typing: (This should result in the following output to the terminal window:<INSTALL_DIR>/bin/player)
+
+which player
+Second ensure that stage is in the PATH, by typing:(This should result in the following output to the terminal window:<INSTALL_DIR>/bin/stage)
+
+which stage
+Go to the directory where you install Stage
+
+cd Stage-4.1.1/
+Go to worlds subdirectory under the Stage
+
+cd worlds/
+Execute the following command, you should see the window of Stage!
+
+stage simple.world
+
